@@ -111,7 +111,7 @@ O banco conta com índices otimizados para as operações mais recorrentes:
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/SEU_USUARIO/enterprise-ops-dashboard.git
+   git clone https://github.com/LaGiGa/enterprise-ops-dashboard.git
    cd enterprise-ops-dashboard
    ```
 
