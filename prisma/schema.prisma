@@ -1,0 +1,61 @@
+// Prisma Schema for Enterprise Ops Dashboard
+// Conforme especificação do PRD:
+// organizations: id (uuid), name (text)
+// operations: id (uuid), org_id (uuid), title (text), category (text), 
+//             status ('em_andamento' | 'concluido' | 'pendente'), 
+//             priority ('baixa' | 'media' | 'alta'), amount (decimal), 
+//             due_date (date), created_at (timestamptz)
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum OperationStatus {
+  em_andamento
+  concluido
+  pendente
+}
+
+enum OperationPriority {
+  baixa
+  media
+  alta
+}
+
+model Organization {
+  id         String      @id @default(uuid()) @db.Uuid
+  name       String      @unique
+  created_at DateTime    @default(now()) @db.Timestamptz(6)
+  operations Operation[]
+
+  @@index([name])
+  @@map("organizations")
+}
+
+model Operation {
+  id           String            @id @default(uuid()) @db.Uuid
+  org_id       String            @db.Uuid
+  title        String
+  category     String
+  status       OperationStatus   @default(pendente)
+  priority     OperationPriority @default(media)
+  amount       Decimal           @db.Decimal(12, 2)
+  due_date     DateTime          @db.Date
+  created_at   DateTime          @default(now()) @db.Timestamptz(6)
+
+  organization Organization      @relation(fields: [org_id], references: [id], onDelete: Cascade)
+
+  @@index([org_id])
+  @@index([status])
+  @@index([category])
+  @@index([priority])
+  @@index([due_date])
+  @@index([created_at(sort: Desc)])
+  @@index([status, created_at(sort: Desc)])
+  @@map("operations")
+}

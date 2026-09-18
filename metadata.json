@@ -1,0 +1,8 @@
+{
+  "name": "Enterprise Ops Dashboard",
+  "description": "Painel de Gestão Operacional e Métricas Corporativas com CRUD relacional, paginação server-side via URL, filtros complexos e gráficos analíticos Recharts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
