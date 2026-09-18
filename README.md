@@ -175,4 +175,4 @@ O banco conta com índices otimizados para as operações mais recorrentes:
 
 ## 👤 Autor
 
-Projeto concebido e desenvolvido com foco em excelência técnica, código limpo e arquitetura escalável para compor meu portfólio de engenharia de software full-stack.
+Desenvolvido por **Laércio** com foco em excelência técnica, código limpo e arquitetura escalável para compor meu portfólio de engenharia de software full-stack.
